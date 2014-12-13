@@ -1,8 +1,7 @@
 package com.company.horsey;
 
-import com.model.Currency;
-import com.service.HorseService;
-import com.service.HorseServiceImpl;
+import com.service.DisplayService;
+import com.service.DisplayServiceImpl;
 import com.service.ProcessService;
 import com.service.ProcessServiceImpl;
 
@@ -12,10 +11,8 @@ public class Horsey {
 
     public static void main(String [ ] args) {
 
-        HorseService horseService = new HorseServiceImpl();
-        horseService.displayHorses(horseService.loadHorses());
-        Currency currency = new Currency();
-        currency.displayCurrencyInventory();
+        DisplayService displayService = new DisplayServiceImpl();
+        displayService.displayInventoryAndHorses();
 
         ProcessService processService = new ProcessServiceImpl();
         Scanner console = new Scanner(System.in);

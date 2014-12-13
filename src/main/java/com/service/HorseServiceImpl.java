@@ -12,7 +12,7 @@ public class HorseServiceImpl implements HorseService {
         Map<Integer, Horse> horses = new HashMap<Integer, Horse>();
 
         // static set of horses, no reason not to hardcode them
-        horses.put(1, new Horse("That Darn Gray Cat", 5, false));
+        horses.put(1, new Horse("That Darn Gray Cat", 5, true));
         horses.put(2, new Horse("Fort Utopia", 10, false));
         horses.put(3, new Horse("Count Sheep", 9, false));
         horses.put(4, new Horse("Ms Traitour", 4, false));
@@ -27,9 +27,20 @@ public class HorseServiceImpl implements HorseService {
         StringBuilder sb = new StringBuilder();
         sb.append("Horses:\n");
 
-        for(Map.Entry<Integer, Horse> horse : horses.entrySet()){
+        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
             sb.append(horse.getKey() + ", " + horse.getValue().getName() + ", " + horse.getValue().getOdds() + ", " + horse.getValue().isWon() + "\n");
         }
         System.out.println(sb.toString().trim());
+    }
+
+    public void setWinner(Integer key) {
+        Map<Integer, Horse> horses = loadHorses();
+
+        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
+            horse.getValue().setWon(false);
+            if (horse.getKey() == key) {
+                horse.getValue().setWon(true);
+            }
+        }
     }
 }
