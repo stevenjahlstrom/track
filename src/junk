@@ -1,0 +1,80 @@
+
+ mvn clean compile exec:java -Dexec.mainClass="com.company.horsey.Horsey"
+
+public boolean processBet(String input) {
+
+
+        String horseNumber = null;
+        String bet = null;
+
+        if(validateBet(input, horseNumber, bet)) {
+        // Let's continue
+
+        System.out.println("HORSE #: " + horseNumber + " BET: " + bet);
+        }
+
+        }
+
+
+
+private boolean validateBet(String input, String horseNumber, String bet) {
+        try {
+        String[] parts;
+        parts = input.split(" ");
+        horseNumber = parts[0];
+        bet = parts[1];
+        if (bet.length() < 2) {
+        return false;
+        }
+        }
+        catch (Exception e) {
+        return false;
+        }
+        return true;
+        }
+
+//        if (validateBet(input)) {
+//
+//            try {
+//                int wager = 0;
+//
+//                if (bet != null) {
+//                    wager = Integer.parseInt((bet));
+//                }
+//
+//                System.out.println("WAGER: " + wager);
+//
+//                int horse = Integer.parseInt(Character.toString(horseNumber.charAt(0)));
+//                if (horse >= 1 && horse <= 7) {
+//                    // now get the amount
+//                    System.out.println("bet looks good");
+//                } else {
+//                    System.out.println("Invalid Horse Number: " + Integer.parseInt(Character.toString(input.charAt(0))));
+//                    //               return false;
+//                }
+//            }
+//            catch (NumberFormatException e) {
+//                return false;
+//            }
+//            return true;
+//        }
+//    }
+//
+//    private boolean validateBet(String input) {
+//        String[] parts;
+//        String horseNumber;
+//        String bet;
+//        try {
+//            parts = input.split(" ");
+//            horseNumber = parts[0];
+//            bet = parts[1];
+//            if (bet.length() == 1) {
+//                return false;
+//            }
+//        }
+//        catch (Exception e) {
+//            return false;
+//        }
+//        return true;
+//    }
+        }
