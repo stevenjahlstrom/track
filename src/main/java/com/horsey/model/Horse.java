@@ -6,9 +6,9 @@ public class Horse {
 
     private String name;
     private int odds;
-    private boolean won;
+    private Boolean won;
 
-    public Horse(String name, int odds, boolean won) {
+    public Horse(String name, int odds, Boolean won) {
         this.name = name;
         this.odds = odds;
         this.won = won;
@@ -37,11 +37,11 @@ public class Horse {
         return Objects.hashCode(name, odds);
     }
 
-    public boolean isWon() {
+    public Boolean isWon() {
         return won;
     }
 
-    public void setWon(boolean won) {
+    public void setWon(Boolean won) {
         this.won = won;
     }
 

@@ -4,8 +4,6 @@ import com.horsey.model.Currency;
 
 public class ProcessServiceImpl implements ProcessService {
 
-    public static int winner = 0;
-
     HorseService horseService = new HorseServiceImpl();
     DisplayService displayService = new DisplayServiceImpl();
     Currency currency = new Currency();
@@ -46,11 +44,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     private boolean validateText(String input) {
-        // TODO  - sja: If it contains numbers return false
-        return true;
+        //return input.matches(".*\\d+.*");
+        return input.matches("^[0-9]+$");
     }
-
-
-
-
 }

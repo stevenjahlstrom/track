@@ -1,5 +1,5 @@
 
- mvn clean compile exec:java -Dexec.mainClass="com.company.horsey.Horsey"
+ mvn clean compile exec:java -Dexec.mainClass="com.horsey.Horsey"
 
 public boolean processBet(String input) {
 
