@@ -7,6 +7,9 @@ import com.horsey.service.ProcessServiceImpl;
 
 import java.util.Scanner;
 
+
+// TODO - sja: Create runnable jar
+
 public class Horsey {
 
     public static void main(String [ ] args) {

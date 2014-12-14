@@ -15,23 +15,21 @@ public class ProcessServiceImpl implements ProcessService {
             displayService.displayMessage("Invalid Command: ");
             return;
         }
-        // single char and not a number
-        if (inputLength == 1 && !isNumeric(input)) {
+        // single char
+        if (inputLength == 1) {
             processSingleCommands(input);
             return;
         }
-        // single char and a number
-        if (inputLength == 1 && isNumeric(input)) {
-           displayService.displayMessage("Invalid Command: " + input);
-            return;
-        }
-        // if there is a number in the input
+        // multi char = is there is a number in the input?
         if (isNumeric(input) && inputLength >= 2) {
             processMultiCommands(input);
         }
-        if (!isNumeric(input)) {
-            processBet(input);
+        else {
+            displayService.displayMessage("Invalid Command: " + input);
         }
+//        if (!isNumeric(input)) {
+//            processBet(input);
+//        }
     }
 
     private void processSingleCommands(String input) {
@@ -68,6 +66,7 @@ public class ProcessServiceImpl implements ProcessService {
         }
     }
 
+    // TODO - sja: Implement me
     public boolean processBet(String input) { return false; }
 
     private boolean isNumeric(String input) {
