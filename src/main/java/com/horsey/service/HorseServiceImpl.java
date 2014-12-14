@@ -11,7 +11,7 @@ public class HorseServiceImpl implements HorseService {
 
         Map<Integer, Horse> horses = new HashMap<Integer, Horse>();
 
-        // static set of horses, no reason not to hardcode them
+        // static set of horses, no reason not to hardcode, they don't change
         horses.put(1, new Horse("That Darn Gray Cat", 5, Boolean.TRUE));
         horses.put(2, new Horse("Fort Utopia", 10, Boolean.FALSE));
         horses.put(3, new Horse("Count Sheep", 9, Boolean.FALSE));
@@ -32,24 +32,13 @@ public class HorseServiceImpl implements HorseService {
         System.out.println(sb.toString().trim());
     }
 
-
-    // TODO - sja: write a test for this
     public void setWinner(Map<Integer, Horse> horses, Integer key) {
- //       Map<Integer, Horse> horses = loadHorses();
 
         for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
-
- //           System.out.println("First Pass: " + horse.getValue().isWon());
-
-
             horse.getValue().setWon(Boolean.FALSE);
-
- //           System.out.println("WON: " + horse.getValue().isWon());
 
             if (horse.getKey() == key) {
                 horse.getValue().setWon(Boolean.TRUE);
-                System.out.println("KEY: " + key + " " + horse.getValue().isWon());
-
             }
         }
     }

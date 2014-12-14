@@ -25,4 +25,13 @@ public class DisplayServiceImpl implements DisplayService {
         displayInventory();
         displayHorses();
     }
+
+
+    // TODO - sja: Restore output
+    @Override
+    public void displayMessage(String msg) {
+//        System.out.println(msg);
+//        displayInventoryAndHorses();
+    }
+
 }

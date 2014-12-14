@@ -10,20 +10,28 @@ public class ProcessServiceImpl implements ProcessService {
 
     public void processInput(String input) {
         int inputLength = input.length();
-        if (inputLength == 1) {
+
+        if (inputLength == 0) {
+            displayService.displayMessage("Invalid Command: ");
+            return;
+        }
+        // single char and not a number
+        if (inputLength == 1 && !isNumeric(input)) {
             processSingleCommands(input);
+            return;
         }
-        else if (validateText(input) &&  inputLength >= 2) {
-            System.out.println("Invalid Command: " + input);
+        // single char and a number
+        if (inputLength == 1 && isNumeric(input)) {
+           displayService.displayMessage("Invalid Command: " + input);
+            return;
         }
-        else if (!validateText(input)) {
+        // if there is a number in the input
+        if (isNumeric(input) && inputLength >= 2) {
+            processMultiCommands(input);
+        }
+        if (!isNumeric(input)) {
             processBet(input);
         }
-    }
-
-    @Override
-    public boolean processBet(String input) {
-        return false;
     }
 
     private void processSingleCommands(String input) {
@@ -39,12 +47,34 @@ public class ProcessServiceImpl implements ProcessService {
                 break;
             }
             default:
-                System.out.println("Invalid Command: " + input);
+                displayService.displayMessage("Invalid Command: " + input);
         }
     }
 
-    private boolean validateText(String input) {
-        //return input.matches(".*\\d+.*");
-        return input.matches("^[0-9]+$");
+    private void processMultiCommands(String input) {
+        String in = Character.toString(input.charAt(0));
+        if (isNumeric(in)) {
+            displayService.displayMessage("Hey, it starts with a number");
+        }
+        else {
+            // it doesn't start with a number
+            if (in.equalsIgnoreCase("w") && numberRange(input.substring(1).trim())) {
+
+            }
+            else {
+                displayService.displayMessage("Invalid Command: " + input);
+            }
+        }
+    }
+
+    public boolean processBet(String input) { return false; }
+
+    private boolean isNumeric(String input) {
+        return input.matches(".*\\d+.*");
+    }
+
+    private boolean numberRange(String input) {
+        int number = Integer.parseInt(input);
+        return number >= 1 && number <=7 ? true : false;
     }
 }
