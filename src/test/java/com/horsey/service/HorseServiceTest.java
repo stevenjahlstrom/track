@@ -18,14 +18,12 @@ public class HorseServiceTest {
     @Test
     public void setWinner() {
         // check default state
-        Map<Integer, Horse> horses = service.loadHorses();
+        Map<Integer, Horse> horses = service.getHorses();
         assertTrue(horses.get(1).isWon());
 
-        service.setWinner(horses, TEST_KEY);
+        service.setWinner(TEST_KEY);
         assertFalse(horses.get(ORIGINAL_WINNER_KEY).isWon());
         assertTrue(horses.get(TEST_KEY).isWon());
 
     }
-
-
 }

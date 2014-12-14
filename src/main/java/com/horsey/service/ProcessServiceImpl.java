@@ -59,7 +59,8 @@ public class ProcessServiceImpl implements ProcessService {
         else {
             // it doesn't start with a number
             if (in.equalsIgnoreCase("w") && numberRange(input.substring(1).trim())) {
-
+                horseService.setWinner(Integer.parseInt(input.substring(1).trim()));
+                displayService.displayInventoryAndHorses();
             }
             else {
                 displayService.displayMessage("Invalid Command: " + input);

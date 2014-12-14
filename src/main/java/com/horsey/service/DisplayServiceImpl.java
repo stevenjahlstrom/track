@@ -16,7 +16,7 @@ public class DisplayServiceImpl implements DisplayService {
 
     @Override
     public void displayHorses() {
-        horseService.displayHorses(horseService.loadHorses());
+        horseService.displayHorses(horseService.getHorses());
 
     }
 
@@ -27,11 +27,10 @@ public class DisplayServiceImpl implements DisplayService {
     }
 
 
-    // TODO - sja: Restore output
     @Override
     public void displayMessage(String msg) {
-//        System.out.println(msg);
-//        displayInventoryAndHorses();
+        System.out.println(msg);
+        displayInventoryAndHorses();
     }
 
 }

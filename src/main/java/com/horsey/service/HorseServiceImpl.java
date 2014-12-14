@@ -7,11 +7,8 @@ import java.util.Map;
 
 public class HorseServiceImpl implements HorseService {
 
-    public Map<Integer, Horse> loadHorses() {
-
-        Map<Integer, Horse> horses = new HashMap<Integer, Horse>();
-
-        // static set of horses, no reason not to hardcode, they don't change
+    private static Map<Integer, Horse> horses = new HashMap<Integer, Horse>();
+    static {
         horses.put(1, new Horse("That Darn Gray Cat", 5, Boolean.TRUE));
         horses.put(2, new Horse("Fort Utopia", 10, Boolean.FALSE));
         horses.put(3, new Horse("Count Sheep", 9, Boolean.FALSE));
@@ -19,6 +16,10 @@ public class HorseServiceImpl implements HorseService {
         horses.put(5, new Horse("Real Princess", 3, Boolean.FALSE));
         horses.put(6, new Horse("Pa Kettle", 5, Boolean.FALSE));
         horses.put(7, new Horse("Gin Stinger", 6, Boolean.FALSE));
+    }
+
+    @Override
+    public Map<Integer, Horse> getHorses() {
         return horses;
     }
 
@@ -32,7 +33,7 @@ public class HorseServiceImpl implements HorseService {
         System.out.println(sb.toString().trim());
     }
 
-    public void setWinner(Map<Integer, Horse> horses, Integer key) {
+    public void setWinner(Integer key) {
 
         for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
             horse.getValue().setWon(Boolean.FALSE);
