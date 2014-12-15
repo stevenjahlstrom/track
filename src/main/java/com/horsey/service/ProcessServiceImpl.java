@@ -50,12 +50,16 @@ public class ProcessServiceImpl implements ProcessService {
     private void processMultiCommands(String input) {
         String in = Character.toString(input.charAt(0));
         if (isNumeric(in)) {
-            if (processBet(in, input)) {
+
+            if (processBet( Integer.parseInt(in), input)) {
                 Integer winnerKey = horseService.getWinner();
                 Integer betNumber = Integer.parseInt(in);
                 Horse winner = (Horse) horseService.getHorses().get(winnerKey);
                 if (winnerKey == betNumber) {
-                    displayService.displayMessage("Payout: " + winner.getName() + ", $" + winner.getOdds() * horseService.retrieveBet().getBet());
+                    StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + winner.getOdds() * horseService.retrieveBet().getBet());
+                    sb.append("\nDispensng:");
+                    displayService.displayMessage(sb.toString());
+
                 }
                 else {
                     // if loser
@@ -67,7 +71,8 @@ public class ProcessServiceImpl implements ProcessService {
             }
         } else {
             // it doesn't start with a number
-            if (in.equalsIgnoreCase("w") && numberRange(input.substring(1).trim())) {
+            Integer horseNumber = Integer.parseInt(input.substring(1).trim());
+            if (in.equalsIgnoreCase("w") && numberRange(horseNumber)) {
                 horseService.setWinner(Integer.parseInt(input.substring(1).trim()));
                 displayService.displayInventoryAndHorses();
             } else {
@@ -76,16 +81,16 @@ public class ProcessServiceImpl implements ProcessService {
         }
     }
 
-    public boolean processBet(String horse, String input) {
+    public boolean processBet(Integer horseNumber, String input) {
 
-        if (!numberRange(horse)) {
-            displayService.displayMessage("Invalid Horse Number: " + horse);
+        if (!numberRange(horseNumber)) {
+            displayService.displayMessage("Invalid Horse Number: " + horseNumber);
             return false;
         }
         String bet = input.substring(1).trim();
 
         if (StringUtils.isNumeric((bet))) {
-            horseService.makeBet(Integer.parseInt(horse), Integer.parseInt(bet));
+            horseService.makeBet(horseNumber, Integer.parseInt(bet));
             return true;
         }
         return false;
@@ -95,8 +100,7 @@ public class ProcessServiceImpl implements ProcessService {
         return input.matches(".*\\d+.*");
     }
 
-    private boolean numberRange(String input) {
-        int number = Integer.parseInt(input);
-        return number >= 1 && number <= 7 ? true : false;
+    private boolean numberRange(Integer horseNumber) {;
+        return horseNumber >= 1 && horseNumber <= 7 ? true : false;
     }
 }
