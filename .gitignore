@@ -24,8 +24,6 @@ release.properties
 # .idea/tasks.xml
 # .idea/dictionaries
 
-src/junk
-
 # Sensitive or high-churn files:
 # .idea/dataSources.ids
 # .idea/dataSources.xml
