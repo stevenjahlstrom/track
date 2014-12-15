@@ -1,5 +1,6 @@
 package com.horsey.service;
 
+import com.horsey.model.Bet;
 import com.horsey.model.Horse;
 
 import java.util.HashMap;
@@ -17,6 +18,8 @@ public class HorseServiceImpl implements HorseService {
         horses.put(6, new Horse("Pa Kettle", 5, Boolean.FALSE));
         horses.put(7, new Horse("Gin Stinger", 6, Boolean.FALSE));
     }
+
+    private static Bet theBet = new Bet(0,0);
 
     @Override
     public Map<Integer, Horse> getHorses() {
@@ -42,5 +45,14 @@ public class HorseServiceImpl implements HorseService {
                 horse.getValue().setWon(Boolean.TRUE);
             }
         }
+    }
+
+    public void makeBet(Integer horse, Integer bet) {
+        theBet.setHorse(horse);
+        theBet.setBet(bet);
+    }
+
+    public Bet retrieveBet() {
+        return theBet;
     }
 }

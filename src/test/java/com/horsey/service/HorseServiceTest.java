@@ -24,6 +24,15 @@ public class HorseServiceTest {
         service.setWinner(TEST_KEY);
         assertFalse(horses.get(ORIGINAL_WINNER_KEY).isWon());
         assertTrue(horses.get(TEST_KEY).isWon());
+    }
 
+    @Test
+    public void setBet() {
+        // check default
+        assertTrue(service.retrieveBet().getHorse() == 0);
+
+        service.makeBet(3, 30);
+        assertTrue(service.retrieveBet().getHorse() == 3);
+        assertTrue(service.retrieveBet().getBet() == 30);
     }
 }
