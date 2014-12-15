@@ -19,7 +19,7 @@ public class HorseServiceImpl implements HorseService {
         horses.put(7, new Horse("Gin Stinger", 6, Boolean.FALSE));
     }
 
-    private static Bet theBet = new Bet(0,0);
+    private static Bet theBet = new Bet(0, 0);
 
     @Override
     public Map<Integer, Horse> getHorses() {
@@ -30,14 +30,16 @@ public class HorseServiceImpl implements HorseService {
         StringBuilder sb = new StringBuilder();
         sb.append("Horses:\n");
 
-        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
-            sb.append(horse.getKey() + ", " + horse.getValue().getName() + ", " + horse.getValue().getOdds() + ", " + horse.getValue().isWon() + "\n");
+        for (Map.Entry<Integer, Horse> horse : horses.entrySet()) {
+            sb.append(horse.getKey() + ", " + horse.getValue().getName() + ", " + horse.getValue().getOdds() + ", ");
+            sb.append(horse.getValue().isWon() ? "Won" + "\n" : "Lost" + "\n");
+
         }
         System.out.println(sb.toString().trim());
     }
 
     public void setWinner(Integer key) {
-        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
+        for (Map.Entry<Integer, Horse> horse : horses.entrySet()) {
             horse.getValue().setWon(Boolean.FALSE);
             if (horse.getKey() == key) {
                 horse.getValue().setWon(Boolean.TRUE);
@@ -46,13 +48,14 @@ public class HorseServiceImpl implements HorseService {
     }
 
     public Integer getWinner() {
-        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
+        for (Map.Entry<Integer, Horse> horse : horses.entrySet()) {
             if (horse.getValue().isWon()) {
                 return horse.getKey();
             }
         }
         return null; // this really should be a NoWinnerSetException
     }
+
     public void makeBet(Integer horse, Integer bet) {
         theBet.setHorse(horse);
         theBet.setBet(bet);
