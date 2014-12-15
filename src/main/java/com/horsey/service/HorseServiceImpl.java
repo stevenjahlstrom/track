@@ -37,16 +37,22 @@ public class HorseServiceImpl implements HorseService {
     }
 
     public void setWinner(Integer key) {
-
         for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
             horse.getValue().setWon(Boolean.FALSE);
-
             if (horse.getKey() == key) {
                 horse.getValue().setWon(Boolean.TRUE);
             }
         }
     }
 
+    public Integer getWinner() {
+        for(Map.Entry<Integer, Horse> horse : horses.entrySet()) {
+            if (horse.getValue().isWon()) {
+                return horse.getKey();
+            }
+        }
+        return null; // this really should be a NoWinnerSetException
+    }
     public void makeBet(Integer horse, Integer bet) {
         theBet.setHorse(horse);
         theBet.setBet(bet);

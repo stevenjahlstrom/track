@@ -26,4 +26,9 @@ public class Bet {
         this.bet = bet;
     }
 
+    public String toString() {
+        String str = ("Horse: " + horse + " Bet: " + bet);
+        return str;
+    }
+
 }
