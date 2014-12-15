@@ -23,7 +23,7 @@ public class ProcessServiceImpl implements ProcessService {
             return;
         }
         // multi char = is there is a number in the input?
-        if (isNumeric(input) && inputLength >= 2) {
+        if (containsANumber(input) && inputLength >= 2) {
             processMultiCommands(input);
         } else {
             displayService.displayMessage("Invalid Command: " + input);
@@ -49,17 +49,18 @@ public class ProcessServiceImpl implements ProcessService {
 
     private void processMultiCommands(String input) {
         String in = Character.toString(input.charAt(0));
-        if (isNumeric(in)) {
-
+        if (StringUtils.isNumeric(in)) {
             if (processBet( Integer.parseInt(in), input)) {
                 Integer winnerKey = horseService.getWinner();
                 Integer betNumber = Integer.parseInt(in);
                 Horse winner = (Horse) horseService.getHorses().get(winnerKey);
                 if (winnerKey == betNumber) {
-                    StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + winner.getOdds() * horseService.retrieveBet().getBet());
-                    sb.append("\nDispensng:");
-                    displayService.displayMessage(sb.toString());
 
+                    displayService.displayInventoryAndHorses();
+
+                    StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + winner.getOdds() * horseService.retrieveBet().getBet());
+                    sb.append("\nDispensing:");
+                    displayService.displayMessage(sb.toString());
                 }
                 else {
                     // if loser
@@ -96,7 +97,7 @@ public class ProcessServiceImpl implements ProcessService {
         return false;
     }
 
-    private boolean isNumeric(String input) {
+    private boolean containsANumber(String input) {
         return input.matches(".*\\d+.*");
     }
 
