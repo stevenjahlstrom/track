@@ -26,11 +26,15 @@ public class DisplayServiceImpl implements DisplayService {
         displayHorses();
     }
 
+    @Override
+    public void displayAllMessages(String msg) {
+        System.out.println(msg);
+        displayInventoryAndHorses();
+    }
 
     @Override
     public void displayMessage(String msg) {
         System.out.println(msg);
-        displayInventoryAndHorses();
     }
 
 }

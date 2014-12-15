@@ -14,7 +14,7 @@ public class ProcessServiceImpl implements ProcessService {
         int inputLength = input.length();
 
         if (inputLength == 0) {
-            displayService.displayMessage("Invalid Command: ");
+            displayService.displayAllMessages("Invalid Command: ");
             return;
         }
         // single char
@@ -26,7 +26,7 @@ public class ProcessServiceImpl implements ProcessService {
         if (containsANumber(input) && inputLength >= 2) {
             processMultiCommands(input);
         } else {
-            displayService.displayMessage("Invalid Command: " + input);
+            displayService.displayAllMessages("Invalid Command: " + input);
         }
     }
 
@@ -43,7 +43,7 @@ public class ProcessServiceImpl implements ProcessService {
                 break;
             }
             default:
-                displayService.displayMessage("Invalid Command: " + input);
+                displayService.displayAllMessages("Invalid Command: " + input);
         }
     }
 
@@ -65,10 +65,10 @@ public class ProcessServiceImpl implements ProcessService {
                 else {
                     // if loser
                     Horse loser = (Horse) horseService.getHorses().get(betNumber);
-                    displayService.displayMessage("No Payout: " + loser.getName());
+                    displayService.displayAllMessages("No Payout: " + loser.getName());
                 }
             } else {
-                displayService.displayMessage("Invalid Bet: " + input);
+                displayService.displayAllMessages("Invalid Bet: " + input);
             }
         } else {
             // it doesn't start with a number
@@ -77,7 +77,7 @@ public class ProcessServiceImpl implements ProcessService {
                 horseService.setWinner(Integer.parseInt(input.substring(1).trim()));
                 displayService.displayInventoryAndHorses();
             } else {
-                displayService.displayMessage("Invalid Command: " + input);
+                displayService.displayAllMessages("Invalid Command: " + input);
             }
         }
     }
@@ -85,7 +85,7 @@ public class ProcessServiceImpl implements ProcessService {
     public boolean processBet(Integer horseNumber, String input) {
 
         if (!numberRange(horseNumber)) {
-            displayService.displayMessage("Invalid Horse Number: " + horseNumber);
+            displayService.displayAllMessages("Invalid Horse Number: " + horseNumber);
             return false;
         }
         String bet = input.substring(1).trim();
