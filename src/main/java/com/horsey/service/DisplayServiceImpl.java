@@ -11,7 +11,6 @@ public class DisplayServiceImpl implements DisplayService {
     @Override
     public void displayInventory() {
         currency.displayCurrencyInventory();
-
     }
 
     @Override

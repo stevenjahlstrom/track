@@ -1,6 +1,7 @@
 package com.horsey.service;
 
 import com.horsey.model.Currency;
+import com.horsey.model.enums.Demonination;
 
 public class DispenseServiceImpl implements DispenseService {
 
@@ -19,11 +20,11 @@ public class DispenseServiceImpl implements DispenseService {
             displayService.displayAllMessages("Insufficient Funds: " + theBet);
         }
 
-        int one_hundred = makeChange(100);
-        int twenty = makeChange(20);
-        int ten = makeChange(10);
-        int five = makeChange(5);
-        int one = makeChange(1);
+        int one_hundred = makeChange(Demonination.HUNDRED.getValue());
+        int twenty = makeChange(Demonination.TWENTY.getValue());
+        int ten = makeChange(Demonination.TEN.getValue());
+        int five = makeChange(Demonination.FIVE.getValue());
+        int one = makeChange(Demonination.ONE.getValue());
 
         return "";
     }
