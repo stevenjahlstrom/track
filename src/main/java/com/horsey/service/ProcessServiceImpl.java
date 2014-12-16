@@ -69,6 +69,10 @@ public class ProcessServiceImpl implements ProcessService {
                         displayService.displayMessage(sb.toString());
                         displayService.displayMessage(result);
                     }
+                    else {
+                        // It may not be insufficient funds, but insufficient bills to make the payout
+                        displayService.displayAllMessages("Insufficient Funds: " + theBet * theOdds);
+                    }
                 }
                 else {
                     // if loser
