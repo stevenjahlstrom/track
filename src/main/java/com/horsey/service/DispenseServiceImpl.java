@@ -6,9 +6,7 @@ import com.horsey.model.enums.Demonination;
 public class DispenseServiceImpl implements DispenseService {
 
     DisplayService displayService = new DisplayServiceImpl();
-
     Currency currency = Currency.getCurrency();
-
     private static int balance;
     private static int payout;
 
@@ -17,18 +15,17 @@ public class DispenseServiceImpl implements DispenseService {
         balance = currency.getTotalCashOnHand();
         payout = thePayout;
 
-        // This should be a recursive function but this will work for now
         if (payout > balance) {
             displayService.displayAllMessages("Insufficient Funds: " + payout);
         }
-
+        // This should be a recursive function but this will work for now
         int hundred = makeChange(Demonination.HUNDRED.getValue());
         int twenty = makeChange(Demonination.TWENTY.getValue());
         int ten = makeChange(Demonination.TEN.getValue());
         int five = makeChange(Demonination.FIVE.getValue());
         int one = makeChange(Demonination.ONE.getValue());
 
-        if(!adjustInventory(hundred, twenty, ten, five, one)) {
+        if (!adjustInventory(hundred, twenty, ten, five, one)) {
             return "";
         }
 
@@ -91,7 +88,6 @@ public class DispenseServiceImpl implements DispenseService {
             currency.setFive(oldFive);
             currency.setOne(oldOne);
         }
-
         return success;
     }
 }

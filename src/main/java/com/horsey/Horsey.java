@@ -16,7 +16,6 @@ public class Horsey {
 
         ProcessService processService = new ProcessServiceImpl();
         Scanner console = new Scanner(System.in);
-        String input;
 
         do {
             processService.processInput(console.nextLine());

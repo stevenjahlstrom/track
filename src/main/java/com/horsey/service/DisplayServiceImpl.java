@@ -16,7 +16,6 @@ public class DisplayServiceImpl implements DisplayService {
     @Override
     public void displayHorses() {
         horseService.displayHorses(horseService.getHorses());
-
     }
 
     @Override

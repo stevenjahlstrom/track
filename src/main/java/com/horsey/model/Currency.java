@@ -2,8 +2,6 @@ package com.horsey.model;
 
 import com.google.common.base.Objects;
 
-
-
 public class Currency {
 
     private static int one;
