@@ -67,25 +67,19 @@ public class Currency {
     }
 
     public void reload() {
-        one = 10;
-        five = 10;
-        ten = 10;
-        twenty = 10;
-        hundred = 10;
+        one = five = ten = twenty = hundred = 10;
     }
 
     public void displayCurrencyInventory() {
         StringBuilder sb = new StringBuilder();
         sb.append("Inventory:\n");
-        sb.append("$1, " + getOne() + "\n");
-        sb.append("$5, " + getFive() + "\n");
-        sb.append("$10, " + getTen() + "\n");
-        sb.append("$20, " + getTwenty() + "\n");
-        sb.append("$100, " + getHundred() + "\n");
+        sb.append("$1," + getOne() + "\n");
+        sb.append("$5," + getFive() + "\n");
+        sb.append("$10 " + getTen() + "\n");
+        sb.append("$20," + getTwenty() + "\n");
+        sb.append("$100," + getHundred() + "\n");
         System.out.println(sb.toString().trim());
     }
-
-
 
     @Override
     public int hashCode() {

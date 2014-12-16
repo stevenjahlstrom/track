@@ -62,13 +62,12 @@ public class ProcessServiceImpl implements ProcessService {
                     Integer theOdds = winner.getOdds();
 
                     StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + theOdds * theBet);
-                    sb.append("\nDispensing:");
 
-                    // figure out how to remove cash from bank
                     String result = dispenseService.dispenseWinnings(theBet * theOdds);
 
                     if (!result.isEmpty()) {
                         displayService.displayMessage(sb.toString());
+                        displayService.displayMessage(result);
                     }
                 }
                 else {
