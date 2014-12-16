@@ -4,11 +4,11 @@ import com.google.common.base.Objects;
 
 public class Currency {
 
-    private int one = 10;
-    private int five = 10;
-    private int ten = 10;
-    private int twenty = 10;
-    private int hundred = 10;
+    private static int one = 10;
+    private static int five = 10;
+    private static int ten = 10;
+    private static int twenty = 10;
+    private static int hundred = 10;
 
     public int getOne() {
         return one;
@@ -50,12 +50,8 @@ public class Currency {
         this.hundred = hundred;
     }
 
-    public String getTotalCashOnHand() {
-        int total = (this.one * 1) + (this.five * 5) + (this.ten * 10) +  (this.twenty * 20) + (this.hundred * 100);
-        StringBuilder sb = new StringBuilder();
-        sb.append("$");
-        sb.append(Integer.toString(total));
-        return sb.toString();
+    public static int getTotalCashOnHand() {
+        return (one * 1) + (five * 5) + (ten * 10) +  (twenty * 20) + (hundred * 100);
     }
 
     public void reload() {

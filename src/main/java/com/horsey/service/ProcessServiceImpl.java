@@ -8,6 +8,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     HorseService horseService = new HorseServiceImpl();
     DisplayService displayService = new DisplayServiceImpl();
+    DispenseService dispenseService = new DispenseServiceImpl();
     Currency currency = new Currency();
 
     public void processInput(String input) {
@@ -57,10 +58,18 @@ public class ProcessServiceImpl implements ProcessService {
                 if (winnerKey == betNumber) {
 
                     displayService.displayInventoryAndHorses();
+                    Integer theBet = horseService.retrieveBet().getBet();
+                    Integer theOdds = winner.getOdds();
 
-                    StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + winner.getOdds() * horseService.retrieveBet().getBet());
+                    StringBuilder sb = new StringBuilder("Payout: " + winner.getName() + ", $" + theOdds * theBet);
                     sb.append("\nDispensing:");
-                    displayService.displayMessage(sb.toString());
+
+                    // figure out how to remove cash from bank
+                    String result = dispenseService.dispenseWinnings(theBet * theOdds);
+
+                    if (!result.isEmpty()) {
+                        displayService.displayMessage(sb.toString());
+                    }
                 }
                 else {
                     // if loser
