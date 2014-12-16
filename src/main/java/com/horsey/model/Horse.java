@@ -1,7 +1,5 @@
 package com.horsey.model;
 
-import com.google.common.base.Objects;
-
 public class Horse {
 
     private String name;
@@ -14,7 +12,10 @@ public class Horse {
         this.won = won;
     }
 
-    public Horse(){};
+    public Horse() {
+    }
+
+    ;
 
     public String getName() {
         return name;
@@ -32,11 +33,6 @@ public class Horse {
         this.odds = odds;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(name, odds);
-    }
-
     public Boolean isWon() {
         return won;
     }
@@ -45,15 +41,5 @@ public class Horse {
         this.won = won;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Horse other = (Horse) obj;
-        return Objects.equal(this.name, other.name) && Objects.equal(this.odds, other.odds);
-    }
+    // At this point there is really no reason to override equals and hashcode -- if I did I'd use guava to do so
 }

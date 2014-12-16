@@ -1,7 +1,5 @@
 package com.horsey.model;
 
-import com.google.common.base.Objects;
-
 public class Currency {
 
     private static int one;
@@ -79,20 +77,6 @@ public class Currency {
         System.out.println(sb.toString().trim());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(one, five, ten, twenty, hundred);
-    }
+    // At this point there is really no reason to override equals and hashcode -- if I did I'd use guava to do so
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Currency other = (Currency) obj;
-        return Objects.equal(this.one, other.one) && Objects.equal(this.five, other.five) && Objects.equal(this.ten, other.ten) && Objects.equal(this.twenty, other.twenty) && Objects.equal(this.hundred, other.hundred);
-    }
 }
