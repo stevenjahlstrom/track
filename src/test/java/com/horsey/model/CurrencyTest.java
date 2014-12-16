@@ -10,16 +10,15 @@ public class CurrencyTest {
 
    @Test
     public void testTotalCashOnHand () {
-       System.out.println(currency.getTotalCashOnHand());
-       assertEquals("$1360", currency.getTotalCashOnHand());
+       assertEquals(1360, currency.getTotalCashOnHand());
     }
 
     @Test
     public void testReload() {
         currency.setFive(0);
         currency.setTen(2);
-        assertEquals("$1230", currency.getTotalCashOnHand());
+        assertEquals(1230, currency.getTotalCashOnHand());
         currency.reload();
-        assertEquals("$1360", currency.getTotalCashOnHand());
+        assertEquals(1360, currency.getTotalCashOnHand());
     }
 }
