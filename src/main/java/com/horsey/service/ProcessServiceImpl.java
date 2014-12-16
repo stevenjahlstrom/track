@@ -9,7 +9,7 @@ public class ProcessServiceImpl implements ProcessService {
     HorseService horseService = new HorseServiceImpl();
     DisplayService displayService = new DisplayServiceImpl();
     DispenseService dispenseService = new DispenseServiceImpl();
-    Currency currency = new Currency();
+    Currency currency = Currency.getCurrency();
 
     public void processInput(String input) {
         int inputLength = input.length();

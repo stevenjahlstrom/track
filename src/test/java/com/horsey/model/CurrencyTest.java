@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CurrencyTest {
 
-    Currency currency = new Currency();
+    Currency currency = new Currency(10,10,10,10,10);
 
    @Test
     public void testTotalCashOnHand () {

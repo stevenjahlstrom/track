@@ -7,12 +7,14 @@ public class DispenseServiceImpl implements DispenseService {
 
     DisplayService displayService = new DisplayServiceImpl();
 
+    Currency currency = Currency.getCurrency();
+
     private static int balance;
     private static int bet;
 
     public String dispenseWinnings(Integer theBet) {
 
-        int balance = Currency.getTotalCashOnHand();
+        int balance = currency.getTotalCashOnHand();
         int bet = theBet;
 
         // This should be a recursive function but this will work for now

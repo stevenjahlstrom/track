@@ -4,7 +4,7 @@ import com.horsey.model.Currency;
 
 public class DisplayServiceImpl implements DisplayService {
 
-    Currency currency = new Currency();
+    Currency currency = Currency.getCurrency();
     HorseService horseService = new HorseServiceImpl();
 
 

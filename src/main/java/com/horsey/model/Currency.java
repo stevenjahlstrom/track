@@ -2,13 +2,29 @@ package com.horsey.model;
 
 import com.google.common.base.Objects;
 
+
+
 public class Currency {
 
-    private static int one = 10;
-    private static int five = 10;
-    private static int ten = 10;
-    private static int twenty = 10;
-    private static int hundred = 10;
+    private static int one;
+    private  static int five;
+    private static int ten;
+    private  static int twenty;
+    private static int hundred;
+
+    public Currency(int one, int five, int ten, int twenty, int hundred) {
+        this.one = one;
+        this.five = five;
+        this.ten = ten;
+        this.twenty = twenty;
+        this.hundred = hundred;
+    }
+
+    public static Currency currency = new Currency(10, 10, 10, 10, 10);
+    public static Currency getCurrency() { return currency; }
+    public static int getTotalCashOnHand() {
+        return (one * 1) + (five * 5) + (ten * 10) +  (twenty * 20) + (hundred * 100);
+    }
 
     public int getOne() {
         return one;
@@ -50,10 +66,6 @@ public class Currency {
         this.hundred = hundred;
     }
 
-    public static int getTotalCashOnHand() {
-        return (one * 1) + (five * 5) + (ten * 10) +  (twenty * 20) + (hundred * 100);
-    }
-
     public void reload() {
         one = 10;
         five = 10;
@@ -72,6 +84,8 @@ public class Currency {
         sb.append("$100, " + getHundred() + "\n");
         System.out.println(sb.toString().trim());
     }
+
+
 
     @Override
     public int hashCode() {
