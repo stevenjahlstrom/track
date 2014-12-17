@@ -1,0 +1,5 @@
+This is a maven project. To run ...
+
+mvn clean compile exec:java -Dexec.mainClass="com.horsey.Horsey"
+or
+java -jar horsey-1.0.jar
